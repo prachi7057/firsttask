@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}Task Details {% endblock title %} 
+{% block taskdetails %} 
+
+
+    <h1>Tasks for {{ faculty.Faculty_name }}</h1>
+    <ul>
+    <table class="table table-hover mt-5 border">
+        <thead>
+        <tr>
+            <th scope="col">Id </th>
+            <th scope="col">task_name</th>
+            <th scope="col">description</th>
+            <th scope="col">student_name</th>
+            <th scope="col">faculty_name</th>
+            <th scope="col">start_time</th>
+            <th scope="col">end_time</th>
+            <th scope="col">status</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+        <tr>
+            <th scope="row">{{task.id}}</th>
+            <td>{{task.task_name}}</td>
+            <td>{{task.description}}</td>
+            <td>{{task.student_name}}</td>
+            <td>{{task.Faculty_name}}</td>
+            <td>{{task.start_time}}</td>
+            <td>{{task.end_time}}</td>
+            <td>
+            <a href="#" class="btn btn-warning btn-sm">{{task.status}}</a>
+            <form action="{% url 'taskcomplete' task.id %}" method="post" >
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Completed">
+            </form>
+            </td>
+        </tr>
+    {% empty %}
+    <li>No tasks assigned</li>
+  
+    {% endfor %}  
+    </tbody>
+  </table>              
+    
+  </ul>
+
+<!-- <div class="col-sm-5 offset-sm-1">
+    <h2>Faculty Name: {{tasks.Faculty_name}}</h2>
+    <hr>
+    <h4> Task Name : {{tasks.task_name}}</h4> <br>
+    <h4> Task Description : {{tasks.description}}</h4> <br>
+    <h4> Student Name : {{tasks.student_name}}</h4> <br>
+    <h4> Start Time : {{tasks.start_time}}</h4> <br>
+    <h4> End Time : {{tasks.end_time}}</h4> <br>
+    <h4> Status : {{tasks.status}}</h4> <br>
+
+</div>  -->
+
+{% endblock taskdetails %}

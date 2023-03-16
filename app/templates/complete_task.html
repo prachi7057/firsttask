@@ -1,0 +1,26 @@
+{% block completetask %}
+<h3>Total Working Hours</h3>
+<h5>Total Working : {{total_hours.hours}} hours | {{total_hours.minutes}} minutes | {{total_hours.seconds}} seconds</h5>
+<h5>Extra Time : 
+    {% if extra_hours != 0 %}
+        {{extra_hours.hours}} hours | {{extra_hours.minutes}} minutes | {{extra_hours.seconds}} seconds
+    {% else %}
+        --
+    {% endif %}
+</h5>
+
+<!-- <div class="col-sm-5 offset-sm-1">
+    <h2>Faculty Name: {{i.Faculty_name}}</h2>
+    <hr>
+    <h4> Task Name : {{i.task_name}}</h4> <br>
+    <h4> Task Description : {{tasks.description}}</h4> <br>
+    <h4> Student Name : {{tasks.student_name}}</h4> <br>
+    <h4> Start Time : {{tasks.start_time}}</h4> <br>
+    <h4> End Time : {{tasks.end_time}}</h4> <br>
+    <h4> Status : {{tasks.status}}</h4> <br>
+
+</div>  -->
+
+
+
+{% endblock completetask %}

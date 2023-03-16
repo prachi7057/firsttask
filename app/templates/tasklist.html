@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Task List{% endblock title %} 
+{% block taskdetails %} 
+<div class="container">
+  <div class="row ">
+              <h4 class="text-center bg-info mt-5">Task List </h4>
+              <form method="GET" action='/search/'class="d-flex">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query"id="query">
+                <button class="btn btn-outline-warning" type="submit">Search</button>
+              </form>
+              <table class="table table-hover mt-5 border">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id </th>
+                      <th scope="col">task_name</th>
+                      <th scope="col">description</th>
+                      <th scope="col">student_name</th>
+                      <th scope="col">faculty_name</th>
+                      <th scope="col">start_time</th>
+                      <th scope="col">end_time</th>
+                      <th scope="col">status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for task in tasks %}
+                    <tr>
+                      <th scope="row">{{task.id}}</th>
+                      <td>{{task.task_name}}</td>
+                      <td>{{task.description}}</td>
+                      <td>{{task.student_name}}</td>
+                      <td>{{task.Faculty_name}}</td>
+                      <td>{{task.start_time}}</td>
+                      <td>{{task.end_time}}</td>
+                      <td>
+                        <a href="#" class="btn btn-warning btn-sm">{{task.status}}</a>
+                        <form action="{% url 'taskcomplete' task.id %}" method="post" >
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-danger" value="Completed">
+                        </form>
+                      </td>
+                  
+                      
+                    </tr>
+                  {% endfor %}  
+                  </tbody>
+                </table>              
+  </div>
+</div>
+    
+{% endblock taskdetails %}
+    

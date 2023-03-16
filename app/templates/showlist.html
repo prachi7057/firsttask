@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} Student  {% endblock title %} 
+{% block student_list %}
+
+<div class="container">
+  <div class="row col-6 offset-3">
+    <h4 class="text-center bg-info mt-5">Student List </h4>
+      <table class="table table-hover mt-5 border">
+        <thead>
+          <tr>
+            <th scope="col">Id </th>
+            <th scope="col">student_name</th>
+            <th scope="col">rollno</th>
+            <th scope="col">standard</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for st in stu %}
+            <tr>
+              <th scope="row">{{st.id}}</th>
+              <td>{{st.student_name}}</td>
+              <td>{{st.rollno}}</td>
+              <td>{{st.standard}}</td>
+            </tr>
+          {% endfor %}  
+        </tbody>
+      </table>
+                  
+                  
+  </div>
+</div>
+
+{% endblock student_list %}
+
+    

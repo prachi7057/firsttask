@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Student Form {% endblock title %} 
+{% block student_form %} 
+
+<h1 class="text-center ">Student Form</h1>
+    <form action="#" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for f in form %}
+    <div class="form-group col-5 offset-4  mb-3">
+        {{f.label_tag}} {{f}} <small class="text-danger">{{fm.errors|striptags}}</small>
+    </div>
+        {% endfor %}
+        <div class=" col-5 offset-4  mb-3">
+            <input type="submit" value="submit" class="btn btn-primary">
+            <a href="{% url 'studentlist' %}" class="btn btn-primary">Student List</a>
+            <a href="{% url 'facultyform' %}" class="btn btn-primary">Faculty Form</a>
+        </div>
+    
+    </form>
+
+
+{% endblock student_form %}
+    
+       

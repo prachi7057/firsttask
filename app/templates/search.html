@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Search {% endblock title %} 
+{% block search %}
+<div class="container">
+    <div class="row col-6 offset-3">
+                
+<table class="table table-hover mt-5 border">
+    <thead>
+      <tr>
+        <th scope="col">Id </th>
+        <th scope="col">task_name</th>
+        <th scope="col">description</th>
+        <th scope="col">student_name</th>
+        <th scope="col">faculty_name</th>
+        <th scope="col">start_time</th>
+        <th scope="col">end_time</th>
+        <th scope="col">status</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for task in var %}
+      <tr>
+        <th scope="row">{{task.id}}</th>
+        <td>{{task.task_name}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.student_name}}</td>
+        <td>{{task.Faculty_name}}</td>
+        <td>{{task.start_time}}</td>
+        <td>{{task.end_time}}</td>
+        <td>{{task.status}}</td>
+      </tr>
+    {% endfor %}  
+    </tbody>
+  </table> 
+  {% endblock search %}  

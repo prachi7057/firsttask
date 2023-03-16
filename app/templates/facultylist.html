@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %} Faculty List {% endblock title %} 
+{% block faculty_list %}
+
+<div class="container">
+  <div class="row col-6 offset-3">
+              <h4 class="text-center bg-info mt-5">Faculty List </h4>
+              <table class="table table-hover mt-5 border">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id </th>
+                      <th scope="col">Faculty_name</th>
+                      <th scope="col">standard</th>
+                      <th scope="col">student_name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  {% for faculty in fac %}
+                    <tr>
+                      <th scope="row">{{faculty.id}}</th>
+                      <td><a href="{% url 'taskdetails' faculty.id %}">
+                        {{faculty.Faculty_name}}
+                      </a></td>
+                      <td>{{faculty.standard}}</td>
+                      <td>{{faculty.student_name}}</td>
+                    </tr>
+                  {% endfor %}  
+                  </tbody>
+                </table>                    
+  </div>
+  <div>
+    <a href="{% url 'task' %}" class="btn btn-primary col-1 offset-5  mb-3 offset-4  mb-3">Task list</a>
+  </div>
+</div>
+     
+{% endblock faculty_list %}
+
+    
+   

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block taskasign %} 
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% url 'js-catlog' %}"></script>
+    <script src="{% static '/admin/js/core.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'admin/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
+    <title>Task form</title>
+    <style>body {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    body p {
+        align-self: center;
+    }
+</style>
+</head>
+<body>
+  <h3 class="text-center mt-5">Task Assign Form</h3>
+    <form method="POST" class="text-center">
+        {% csrf_token %}
+        <div class="form-group col-8 offset-2  mb-3">
+          {{ form.media }}
+          {{ form.as_p }}
+        </div>
+        
+        <input type="submit" name="Submit" id="submit">
+    </form>
+</body>
+</html>>
+{% endblock taskasign %}
